@@ -1,0 +1,75 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: ebs-hackathon
+metadata:
+    template: azd-init@1.13.2
+services:
+    consumer:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/interop/consumer
+        host: containerapp
+        language: js
+    executable:
+        project: .venv/Lib/site-packages/promptflow/_sdk/data/executable
+        host: containerapp
+        language: python
+    extension:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/extension
+        host: containerapp
+        language: js
+    galata-extension:
+        project: .venv/Lib/site-packages/jupyterlab/galata/@jupyterlab/galata-extension
+        host: containerapp
+        language: js
+    incompat:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/incompat
+        host: containerapp
+        language: js
+    jupyterlab-manager:
+        project: .venv/share/jupyter/labextensions/@jupyter-widgets/jupyterlab-manager
+        host: containerapp
+        language: js
+        dist: dist
+    jupyterlab-pygments:
+        project: .venv/share/jupyter/labextensions/jupyterlab_pygments
+        host: containerapp
+        language: js
+    lab-extension:
+        project: .venv/share/jupyter/labextensions/@jupyter-notebook/lab-extension
+        host: containerapp
+        language: js
+    mimeextension:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/mimeextension
+        host: containerapp
+        language: js
+    package:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/package
+        host: containerapp
+        language: js
+    provider:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/interop/provider
+        host: containerapp
+        language: js
+    staging:
+        project: .venv/Lib/site-packages/jupyterlab/staging
+        host: containerapp
+        language: js
+    static:
+        project: .venv/share/jupyter/lab/static
+        host: containerapp
+        language: js
+    test-hyphens:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/test-hyphens
+        host: containerapp
+        language: js
+    test-hyphens-underscore:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/test-hyphens-underscore
+        host: containerapp
+        language: js
+    test-no-hyphens:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/test_no_hyphens
+        host: containerapp
+        language: js
+    token:
+        project: .venv/Lib/site-packages/jupyterlab/tests/mock_packages/interop/token
+        host: containerapp
+        language: js

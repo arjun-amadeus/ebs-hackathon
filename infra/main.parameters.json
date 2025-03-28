@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "environmentName": {
+        "value": "${AZURE_ENV_NAME}"
+      },
+      "location": {
+        "value": "${AZURE_LOCATION}"
+      },
+      "galataExtensionExists": {
+        "value": "${SERVICE_GALATA_EXTENSION_RESOURCE_EXISTS=false}"
+      },
+      "stagingExists": {
+        "value": "${SERVICE_STAGING_RESOURCE_EXISTS=false}"
+      },
+      "staticExists": {
+        "value": "${SERVICE_STATIC_RESOURCE_EXISTS=false}"
+      },
+      "extensionExists": {
+        "value": "${SERVICE_EXTENSION_RESOURCE_EXISTS=false}"
+      },
+      "incompatExists": {
+        "value": "${SERVICE_INCOMPAT_RESOURCE_EXISTS=false}"
+      },
+      "consumerExists": {
+        "value": "${SERVICE_CONSUMER_RESOURCE_EXISTS=false}"
+      },
+      "providerExists": {
+        "value": "${SERVICE_PROVIDER_RESOURCE_EXISTS=false}"
+      },
+      "tokenExists": {
+        "value": "${SERVICE_TOKEN_RESOURCE_EXISTS=false}"
+      },
+      "mimeextensionExists": {
+        "value": "${SERVICE_MIMEEXTENSION_RESOURCE_EXISTS=false}"
+      },
+      "packageExists": {
+        "value": "${SERVICE_PACKAGE_RESOURCE_EXISTS=false}"
+      },
+      "testHyphensExists": {
+        "value": "${SERVICE_TEST_HYPHENS_RESOURCE_EXISTS=false}"
+      },
+      "testHyphensUnderscoreExists": {
+        "value": "${SERVICE_TEST_HYPHENS_UNDERSCORE_RESOURCE_EXISTS=false}"
+      },
+      "testNoHyphensExists": {
+        "value": "${SERVICE_TEST_NO_HYPHENS_RESOURCE_EXISTS=false}"
+      },
+      "executableExists": {
+        "value": "${SERVICE_EXECUTABLE_RESOURCE_EXISTS=false}"
+      },
+      "staticExists": {
+        "value": "${SERVICE_STATIC_RESOURCE_EXISTS=false}"
+      },
+      "labExtensionExists": {
+        "value": "${SERVICE_LAB_EXTENSION_RESOURCE_EXISTS=false}"
+      },
+      "jupyterlabManagerExists": {
+        "value": "${SERVICE_JUPYTERLAB_MANAGER_RESOURCE_EXISTS=false}"
+      },
+      "jupyterlabPygmentsExists": {
+        "value": "${SERVICE_JUPYTERLAB_PYGMENTS_RESOURCE_EXISTS=false}"
+      },
+      "principalId": {
+        "value": "${AZURE_PRINCIPAL_ID}"
+      }
+    }
+}

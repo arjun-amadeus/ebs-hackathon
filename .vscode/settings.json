@@ -1,0 +1,4 @@
+{
+    "tts.runner": "TTRegression.cmd",
+    "python.languageServer": "Pylance"
+}
