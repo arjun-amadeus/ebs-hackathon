@@ -25,7 +25,7 @@ load_dotenv()
 @trace
 def execute_dbresearch(question: str, feedback: str = "No feedback"):
  
-    ai_project_conn_str = "southindia"+".api.azureml.ms;"+"e654b0e0-2045-4ede-9910-26989f26232d"+";"+"ebs-rg-hackathon"+";"+"ebs-hackathon"
+    ai_project_conn_str = "southindia.api.azureml.ms;e654b0e0-2045-4ede-9910-26989f26232d;ebs-rg-hackathon;ebshack-2978"
     project_client = AIProjectClient.from_connection_string(
         credential=DefaultAzureCredential(),
         conn_str=ai_project_conn_str,
