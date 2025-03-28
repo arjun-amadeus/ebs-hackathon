@@ -28,8 +28,12 @@ def execute_dbresearch(question: str, feedback: str = "No feedback"):
     ai_project_conn_str = "southindia.api.azureml.ms;e654b0e0-2045-4ede-9910-26989f26232d;ebs-rg-hackathon;ebshack-2978"
     project_client = AIProjectClient.from_connection_string(
         credential=DefaultAzureCredential(),
-        conn_str=ai_project_conn_str,
+        conn_str=ai_project_conn_str,   
     )
+
+    prompt_template = PromptTemplate.from_prompty(file_path="converter.prompty")
+    messages = prompt_template.create_messages(question=question, feedback=feedback)
+ 
 
     conn_list = project_client.connections.list()
     conn_id = ""
@@ -40,14 +44,12 @@ def execute_dbresearch(question: str, feedback: str = "No feedback"):
 
     print (conn_id)
     # Initialize azure ai search tool and add the connection id
-
- 
+    
     with project_client:
         agent = project_client.agents.create_agent(
-            model="gpt-4",
+            model="gpt-4o",
             name="ebs-hackathon",
-            instructions="You are an expert in python to Java code conversion",
-            headers={"x-ms-enable-preview": "true"},
+            instructions=messages[0]['content'],
         )
 
         print(f"Created agent, ID: {agent.id}")
@@ -56,12 +58,43 @@ def execute_dbresearch(question: str, feedback: str = "No feedback"):
         thread = project_client.agents.create_thread()
         print(f"Created thread, ID: {thread.id}") 
 
+        message = project_client.agents.create_message(
+            thread_id=thread.id,
+            role="user",
+            content=question,
+        )
+        print(f"Created message, ID: {message.id}")
+
+
+        # Create and process run
+        run = project_client.agents.create_and_process_run(thread_id=thread.id, assistant_id=agent.id)
+        print(f"Run finished with status: {run.last_error}")
+
+        print("Agent created and now researching...")
+        print('')
+
+        project_client.agents.delete_agent(agent.id)
+        print("Deleted agent")
+
+        # Fetch and log all messages
+        messages = project_client.agents.list_messages(thread_id=thread.id)
+        #print(f"Messages: {messages}")
+
+        response = messages.data[0]['content'][0]['text']['value']
+
+        print(response)
+
     return "research"
  
 @trace
 def research(question: str, feedback: str = "No feedback"):
     research = execute_dbresearch(question=question, feedback=feedback)
     print(research)
-    return research
+    return "research"
 
-research("abc")
+research(""""  Convert the python legacy code to java code. Just give the code as the output. Write nothing except the executable code. 
+pythonCopyEditimport requests
+def fetch_data(url):
+response = requests.get(url)
+return response.json()
+        """)

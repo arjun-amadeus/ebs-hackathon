@@ -1,0 +1,35 @@
+---
+name: python to java converter
+description: This SQL Writer takes a request from a user as well as database insights provided by a database researcher to write a SQL query.
+authors:
+  - David Rei
+model:
+    api: chat
+    configuration:
+        type: azure_openai
+        azure_deployment: gpt-4
+        api_version: 2024-08-01-preview
+    parameters:
+        max_tokens: 1200
+        temperature: 0.2
+        response_format:
+          type: json_object
+sample: 
+  #databaseInsightsContext: ${file:db-insights.json}
+  question: "Convert the python code to java ? 
+              pythonCopyEditimport requests
+              def fetch_data(url):
+                response = requests.get(url)
+                return response.json()"
+---
+system:
+
+# SQL Writer Agent
+You are an expert in converting legacy python code to Java. You have been asked to convert the given python code to Java.
+
+# Output Format
+Return the Converted Java code.
+
+user:
+# User Request
+{{question}}
