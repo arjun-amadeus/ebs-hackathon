@@ -89,12 +89,42 @@ def execute_dbresearch(question: str, feedback: str = "No feedback"):
 @trace
 def research(question: str, feedback: str = "No feedback"):
     research = execute_dbresearch(question=question, feedback=feedback)
-    print(research)
-    return "research"
+    return "Success"
 
-research(""""  Convert the python legacy code to java code. Just give the code as the output. Write nothing except the executable code. 
-pythonCopyEditimport requests
-def fetch_data(url):
-response = requests.get(url)
-return response.json()
+research(""""  Convert the python legacy code to java code. Just give the code as the output. Write nothing except the executable code. Translate Python code using legacy libraries (e.g., 
+requests, pandas, flask) to Java equivalents (e.g., HttpClient, Spring Boot, JPA). Ensure the converted Java code follows cloud principles 
+(containerization, API-first, scalability). Convert Python Flask-based services into Spring Boot 
+microservices. Generate unit tests in Java to match Python test behavior if python tests exists. Write nothing except the executable code.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function to compute the Fourier Transform of a signal
+def compute_fourier_transform(signal):
+    return np.fft.fft(signal)
+
+# Generate a sample signal: a sum of two sine waves
+t = np.linspace(0, 1, 500)
+signal = np.sin(2 * np.pi * 50 * t) + np.sin(2 * np.pi * 120 * t)
+
+# Compute the Fourier Transform of the signal
+fourier_transform = compute_fourier_transform(signal)
+
+# Compute the frequencies corresponding to the Fourier Transform
+frequencies = np.fft.fftfreq(len(fourier_transform))
+
+# Plot the original signal
+plt.subplot(2, 1, 1)
+plt.plot(t, signal)
+plt.title('Original Signal')
+
+# Plot the magnitude of the Fourier Transform
+plt.subplot(2, 1, 2)
+plt.plot(frequencies, np.abs(fourier_transform))
+plt.title('Fourier Transform')
+plt.xlabel('Frequency')
+plt.ylabel('Magnitude')
+
+plt.tight_layout()
+plt.show()
         """)
